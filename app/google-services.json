@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "790561921266",
+    "project_id": "project-d116e",
+    "storage_bucket": "project-d116e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790561921266:android:c9b0fea0a4fdd38ac4586b",
+        "android_client_info": {
+          "package_name": "com.example.projectprmteam2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfDPb8ECjocyvfukhXGn8xPd4fQ6MNn7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
