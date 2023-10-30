@@ -8,6 +8,6 @@ public class BrandList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_brand_list);
+        setContentView(R.layout.fragment_home);
     }
 }

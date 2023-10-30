@@ -17,16 +17,16 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         sharepreference=new Sharepreference(this);
-        Button btnlogout= findViewById(R.id.button);
-
-        btnlogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sharepreference.logout();
-                Intent intent = new Intent(Home.this,LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        Button btnlogout= findViewById(R.id.button);
+//
+//        btnlogout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                sharepreference.logout();
+//                Intent intent = new Intent(Home.this,LoginActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
     }
 }

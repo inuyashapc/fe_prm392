@@ -71,21 +71,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_margin="10dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="8dp">
-
-                    <androidx.viewpager.widget.ViewPager
-                        android:id="@+id/viewpager"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </androidx.cardview.widget.CardView>
-
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcvCategory"
