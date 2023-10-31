@@ -40,7 +40,7 @@ public class ProductDetail extends AppCompatActivity {
         tv_name.setText(product.getName());
         tv_category.setText(product.getCategory().getName());
         tv_brand.setText(product.getBrand().getName());
-        tv_price.setText(product.getPrice()+"");
+        tv_price.setText((int)product.getPrice()+ " vnd");
         tv_description.setText(product.getDescription());
     }
 }

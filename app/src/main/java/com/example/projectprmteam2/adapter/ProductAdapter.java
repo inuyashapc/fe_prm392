@@ -46,12 +46,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         Product product = listProduct.get(position);
         if (product == null)
             return;
-        Picasso.get().load(product.getThumbnail()).into(holder.imageView);
+        if(product.getThumbnail()!=null){
+            Picasso.get().load(product.getThumbnail()).into(holder.imageView);
+        }
 //        holder.imageView.setImageResource(product.getThumbnail());
         holder.tv_product_name.setText(product.getName());
         holder.tv_product_category.setText("Switch: "+product.getCategory().getName());
         holder.tv_brand_product.setText("Hãng: "+product.getBrand().getName());
-        holder.tv_product_price.setText("Giá: "+product.getPrice());
+        holder.tv_product_price.setText("Giá: "+(int)product.getPrice()+ " vnd");
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
