@@ -26,10 +26,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Fragment_Home extends Fragment {
-    private List<Product> listProduct;
-    private RecyclerView recyclerView;
-    private Context context;
     private ProductAdapter productAdapter;
+    private ProductAdapter productCheapAdapter;
+    private RecyclerView recyclerView;
+    private RecyclerView recyclerViewCheap;
+    private Context context;
+
+    private List<Product> listProduct;
+    private List<Product> listProductCheap;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,6 +44,13 @@ public class Fragment_Home extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(productAdapter);
         getProductList2();
+
+        recyclerViewCheap = view.findViewById(R.id.rcv_cheap);
+        productCheapAdapter = new ProductAdapter(context, listProductCheap);
+        recyclerViewCheap.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerViewCheap.setAdapter(productCheapAdapter);
+        getProductListCheap();
+
         return view;
     }
 
@@ -70,6 +81,22 @@ public class Fragment_Home extends Fragment {
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 listProduct = response.body();
                 recyclerView.setAdapter(new ProductAdapter(context, listProduct));
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Log.e("API Error", "Lỗi khi gọi API", t);
+                Toast.makeText(context, "Lỗi call api", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getProductListCheap() {
+        ApiService.apiservice.getFiveCheapest().enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                listProductCheap = response.body();
+                recyclerViewCheap.setAdapter(new ProductAdapter(context, listProductCheap));
             }
 
             @Override

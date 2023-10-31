@@ -44,4 +44,7 @@ public interface ApiService {
 
     @GET("products/{id}")
     Call<Product> getProductDetail(@Path("id") String id);
+
+    @GET("products/fiveCheapest")
+    Call<List<Product>> getFiveCheapest();
 }
