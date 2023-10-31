@@ -5,16 +5,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.projectprmteam2.Activity.Fragment.Fragment_Home;
 import com.example.projectprmteam2.Activity.Fragment.Fragment_Profile;
 import com.example.projectprmteam2.R;
 import com.example.projectprmteam2.Sharepreference;
+import com.example.projectprmteam2.adapter.ProductAdapter;
+import com.example.projectprmteam2.api.ApiService;
+import com.example.projectprmteam2.model.Product;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Home extends AppCompatActivity {
     Sharepreference sharepreference;
@@ -22,6 +33,8 @@ public class Home extends AppCompatActivity {
     private Fragment fragment;
     private FragmentManager manager;
     private FragmentTransaction transaction;
+
+    private ProductAdapter productAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +69,7 @@ public class Home extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.home) {
                     fragment = new Fragment_Home();
-                }else if (item.getItemId() == R.id.person) {
+                } else if (item.getItemId() == R.id.person) {
                     fragment = new Fragment_Profile();
                 }
 
@@ -81,4 +94,6 @@ public class Home extends AppCompatActivity {
             }
         });
     }
+
+
 }
