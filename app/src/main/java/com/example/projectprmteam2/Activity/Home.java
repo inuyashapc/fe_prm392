@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.projectprmteam2.Activity.Fragment.Fragment_Category;
 import com.example.projectprmteam2.Activity.Fragment.Fragment_Home;
 import com.example.projectprmteam2.Activity.Fragment.Fragment_Profile;
 import com.example.projectprmteam2.R;
@@ -71,21 +72,10 @@ public class Home extends AppCompatActivity {
                     fragment = new Fragment_Home();
                 } else if (item.getItemId() == R.id.person) {
                     fragment = new Fragment_Profile();
+                } else if (item.getItemId() == R.id.category) {
+                    fragment = new Fragment_Category();
                 }
 
-//                switch (item.getItemId()){
-//                    case  R.id.home:
-//                        fragment = new Fragment_Home();
-//                        break;
-//                    case  R.id.donhang:
-//                        fragment=new FragMent_Bill();
-//                        break;
-//                    case  R.id.person:
-//                        fragment = new SettingFragment();
-//                        break;
-//                    case  R.id.category:
-//                        startActivity(new Intent(HomeActivity.this, ThongKeDanhMucActivity.class));break;
-//                }
                 if (fragment != null) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, fragment).commit();
                 }

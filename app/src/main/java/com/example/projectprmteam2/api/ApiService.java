@@ -23,8 +23,8 @@ import retrofit2.http.Query;
 
 public interface ApiService {
     Gson gson = new GsonBuilder().create();
-    //khi su dung phair sua lai dia chi ip theo ip may:ipv4(WindowR->cmd->ipconfig)
-    ApiService apiservice = new Retrofit.Builder().baseUrl("http://192.168.1.252:9999/").
+    //khi su dung phai sua lai dia chi ip theo ip may:ipv4(WindowR->cmd->ipconfig)
+    ApiService apiservice = new Retrofit.Builder().baseUrl("http://192.168.1.4:9999/").
             addConverterFactory(GsonConverterFactory.create(gson)).
             build().create(ApiService.class);
 
@@ -34,7 +34,7 @@ public interface ApiService {
     Call<LoginResponse> login(@Body Logindata logindata);
 
     @GET("brands")
-    Call<Brand> getBrandList();
+    Call<List<Brand>> getBrandList();
 
     @GET("category")
     Call<Category> getCategoryList();
@@ -47,4 +47,7 @@ public interface ApiService {
 
     @GET("products/fiveCheapest")
     Call<List<Product>> getFiveCheapest();
+    @GET("products/{brand}")
+    Call<Product> getProductsByBrand(@Path("brand") String brand);
+
 }
