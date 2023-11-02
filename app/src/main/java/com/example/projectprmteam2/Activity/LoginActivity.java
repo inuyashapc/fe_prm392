@@ -14,7 +14,7 @@ import com.example.projectprmteam2.R;
 import com.example.projectprmteam2.Sharepreference;
 import com.example.projectprmteam2.api.ApiService;
 import com.example.projectprmteam2.model.LoginResponse;
-import com.example.projectprmteam2.model.Logindata;
+import com.example.projectprmteam2.model.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,39 +38,39 @@ public class LoginActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
             startActivity(intent);
-            finish();
         }
     });
 
         loginButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Logindata logindata = new Logindata(edtusename.getText().toString(),edtpassword.getText().toString());
-            login(logindata);
-
+            User user = new User(edtusename.getText().toString(),edtpassword.getText().toString());
+            System.out.println(user);
+            login(user);
         }
     });
 }
 
-    private void login(Logindata login) {
-        ApiService.apiservice.login(login).enqueue(new Callback<LoginResponse>() {
+    private void login(User user) {
+        ApiService.apiservice.login(user).enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                LoginResponse loginResponse = response.body();
-
-                if(loginResponse.isSuccess()){
-                    preferences.login(loginResponse.isSuccess());
-                    Toast.makeText(LoginActivity.this, "Đang nhap thanh cong", Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<User> call, Response<User> response) {
+                User loginResponse = response.body();
+                if(!loginResponse.get_id().isEmpty()){
+                    preferences.login(loginResponse.get_id());
+                    preferences.setRoleUser(loginResponse.getRole());
+                    Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
+
                 }else
-                    Toast.makeText(LoginActivity.this, "username or password not correct", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Username or password not correct", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Loi co so du lieu", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Database error!!!", Toast.LENGTH_SHORT).show();
             }
         });
     }

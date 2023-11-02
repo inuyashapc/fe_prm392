@@ -32,6 +32,7 @@ public class Fragment_Profile extends Fragment_Home{
             @Override
             public void onClick(View v) {
                 sharepreference.logout();
+                sharepreference.removeRole();
                 Intent intent = new Intent(view.getContext(), LoginActivity.class);
                 startActivity(intent);
                 getActivity().finish();

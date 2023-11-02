@@ -13,21 +13,39 @@ public class Sharepreference {
             System.out.println(sharedpreferences);
         }
 
-        public boolean getCheckLogin() {
-            boolean check = sharedpreferences.getBoolean("checkLogin", false);
-            return check;
+        public String getCheckLogin() {
+            String userId = sharedpreferences.getString("userId","");
+            return userId;
         }
 
-        public void login(boolean check) {
+        public void login(String userId) {
             SharedPreferences.Editor editor = sharedpreferences.edit();
-            editor.putBoolean("checkLogin", check);
+            editor.putString("userId", userId);
             editor.apply();
         }
 
         public void logout() {
             SharedPreferences.Editor editor = sharedpreferences.edit();
-            editor.remove("checkLogin");
+            editor.remove("userId");
             editor.apply();
         }
+
+
+    public String getRoleUser() {
+        String userId = sharedpreferences.getString("userRole","User");
+        return userId;
+    }
+
+    public void setRoleUser(String role) {
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("userRole", role);
+        editor.apply();
+    }
+
+    public void removeRole() {
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.remove("userRole");
+        editor.apply();
+    }
 
 }

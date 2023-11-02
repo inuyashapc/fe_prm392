@@ -3,10 +3,10 @@ package com.example.projectprmteam2.model;
 import java.util.Date;
 
 public class User {
-    private int _id;
+    private String _id;
+    private String username;
     private String password;
     private String fullname;
-    private String username;
     private String role;
     private int phoneNumber;
 
@@ -16,8 +16,14 @@ public class User {
     public User() {
     }
 
-    public User(int _id, String password, String fullname, String username, String role, int phoneNumber, String address) {
-        this._id = _id;
+    public User(String username,String password) {
+        this.password = password;
+        this.username = username;
+    }
+
+
+
+    public User(String password, String fullname, String username, String role, int phoneNumber, String address) {
         this.password = password;
         this.fullname = fullname;
         this.username = username;
@@ -26,13 +32,10 @@ public class User {
         this.address = address;
     }
 
-    public int get_id() {
+    public String get_id() {
         return _id;
     }
 
-    public void set_id(int _id) {
-        this._id = _id;
-    }
 
     public String getPassword() {
         return password;
