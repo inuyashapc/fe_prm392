@@ -6,7 +6,7 @@ import com.example.projectprmteam2.model.Product;
 import com.example.projectprmteam2.model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
+import java.util.List;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -34,11 +34,20 @@ public interface ApiService {
 
 
     @GET("brands")
-    Call<Brand> getBrandList();
+    Call<List<Brand>> getBrandList();
 
     @GET("category")
     Call<Category> getCategoryList();
 
     @GET("products")
-    Call<Product> getProductList();
+    Call<List<Product>> getProductList();
+
+    @GET("products/{id}")
+    Call<Product> getProductDetail(@Path("id") String id);
+
+    @GET("products/fiveCheapest")
+    Call<List<Product>> getFiveCheapest();
+    @GET("products/{brand}")
+    Call<Product> getProductsByBrand(@Path("brand") String brand);
+
 }

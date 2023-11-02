@@ -26,6 +26,9 @@
             android:name=".Activity.HomeAdminActivity"
             android:exported="false" />
         <activity
+            android:name=".ProductDetail"
+            android:exported="false" />
+        <activity
             android:name=".Activity.RegisterActivity"
             android:exported="false" />
         <activity

@@ -127,7 +127,7 @@
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:elevation="5dp"
-                        android:text="Sản phẩm nổi bật"
+                        android:text="Sản phẩm giá rẻ"
                         android:textColor="@color/purple_200"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -150,9 +150,10 @@
 
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcvNB"
+                    android:id="@+id/rcv_cheap"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"/>
             </LinearLayout>
 
         </ScrollView>

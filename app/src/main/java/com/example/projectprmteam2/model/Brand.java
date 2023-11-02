@@ -1,6 +1,8 @@
 package com.example.projectprmteam2.model;
 
-public class Brand {
+import java.io.Serializable;
+
+public class Brand implements Serializable {
     private String _id;
     private String name;
 

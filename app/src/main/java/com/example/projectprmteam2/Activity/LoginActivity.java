@@ -13,7 +13,6 @@ import com.example.projectprmteam2.MainActivity;
 import com.example.projectprmteam2.R;
 import com.example.projectprmteam2.Sharepreference;
 import com.example.projectprmteam2.api.ApiService;
-import com.example.projectprmteam2.model.LoginResponse;
 import com.example.projectprmteam2.model.User;
 
 import retrofit2.Call;
