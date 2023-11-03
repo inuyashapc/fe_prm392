@@ -2,7 +2,6 @@ package com.example.projectprmteam2.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,34 +24,38 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
+public class ProductHomeScrollAdapter extends RecyclerView.Adapter<ProductHomeScrollAdapter.ProductHomeScrollViewHolder> {
     private Context context;
     private List<Product> listProduct;
 
-    public ProductAdapter(Context context, List<Product> listProduct) {
+    public ProductHomeScrollAdapter(Context context, List<Product> listProduct) {
         this.context = context;
         this.listProduct = listProduct;
     }
 
     @NonNull
     @Override
-    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false);
-        return new ProductViewHolder(view);
+    public ProductHomeScrollViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_product_scroll, parent, false);
+        return new ProductHomeScrollViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductHomeScrollViewHolder holder, int position) {
         Product product = listProduct.get(position);
         if (product == null)
             return;
         if (product.getThumbnail() != null) {
             Picasso.get().load(product.getThumbnail()).into(holder.imageView);
         }
-//        holder.imageView.setImageResource(product.getThumbnail());
-        holder.tv_product_name.setText(product.getName());
-        holder.tv_product_category.setText("Switch: " + product.getCategory().getName());
-        holder.tv_brand_product.setText("Hãng: " + product.getBrand().getName());
+//        holder.tv_product_name.setText(product.getName());
+        String productName = product.getName();
+        if (productName.length() > 16) {
+            // Nếu chuỗi dài hơn 16 kí tự, chỉ lấy 16 kí tự đầu tiên và thêm dấu "..."
+            productName = productName.substring(0, 16) + "...";
+        }
+        holder.tv_product_name.setText(productName);
+
         holder.tv_product_price.setText("Giá: " + (int) product.getPrice() + " vnd");
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,17 +72,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return 0;
     }
 
-    public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private ImageView imageView;
-        private TextView tv_product_name, tv_product_category, tv_brand_product, tv_product_price;
 
-        public ProductViewHolder(@NonNull View itemView) {
+    public class ProductHomeScrollViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private ImageView imageView;
+        private TextView tv_product_name, tv_product_price;
+
+        public ProductHomeScrollViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.img_product);
-            tv_product_name = itemView.findViewById(R.id.tv_product_name);
-            tv_product_category = itemView.findViewById(R.id.tv_product_category);
-            tv_brand_product = itemView.findViewById(R.id.tv_brand_product);
-            tv_product_price = itemView.findViewById(R.id.tv_product_price);
+            imageView = itemView.findViewById(R.id.img_product_scroll);
+            tv_product_name = itemView.findViewById(R.id.tv_product_name_scroll);
+            tv_product_price = itemView.findViewById(R.id.tv_product_price_scroll);
         }
 
         @Override

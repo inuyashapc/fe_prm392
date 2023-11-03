@@ -3,6 +3,7 @@ package com.example.projectprmteam2.api;
 import com.example.projectprmteam2.model.Brand;
 import com.example.projectprmteam2.model.Category;
 import com.example.projectprmteam2.model.Product;
+import com.example.projectprmteam2.model.Search;
 import com.example.projectprmteam2.model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -17,8 +18,8 @@ import retrofit2.http.Path;
 
 public interface ApiService {
     Gson gson = new GsonBuilder().create();
-    //khi su dung phair sua lai dia chi ip theo ip may:ipv4(WindowR->cmd->ipconfig)
-    ApiService apiservice = new Retrofit.Builder().baseUrl("http://192.168.1.3:9999/").
+    //khi su dung phai sua lai dia chi ip theo ip may:ipv4(WindowR->cmd->ipconfig)
+    ApiService apiservice = new Retrofit.Builder().baseUrl("http://192.168.1.252:9999/").
             addConverterFactory(GsonConverterFactory.create(gson)).
             build().create(ApiService.class);
 
@@ -50,4 +51,8 @@ public interface ApiService {
     @GET("products/{brand}")
     Call<Product> getProductsByBrand(@Path("brand") String brand);
 
+    @GET("products/cheapest")
+    Call<List<Product>> getCheapestList();
+    @GET("products/search")
+    Call<List<Product>> getAllProductSearch(@Body Search search);
 }
