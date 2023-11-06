@@ -42,7 +42,7 @@
                 android:background="@drawable/border"
                 android:gravity="center|left"
                 android:paddingStart="10dp"
-                android:queryHint="Enter user name"
+                android:queryHint="Nhập bàn phím bạn muốn tìm"
                 android:iconifiedByDefault="false"
                 android:textAllCaps="false"
                 android:textColor="#807A7A" />

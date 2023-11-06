@@ -19,7 +19,7 @@ import retrofit2.http.Path;
 public interface ApiService {
     Gson gson = new GsonBuilder().create();
     //khi su dung phai sua lai dia chi ip theo ip may:ipv4(WindowR->cmd->ipconfig)
-    ApiService apiservice = new Retrofit.Builder().baseUrl("http://192.168.1.252:9999/").
+    ApiService apiservice = new Retrofit.Builder().baseUrl("https://prm-project.onrender.com/").
             addConverterFactory(GsonConverterFactory.create(gson)).
             build().create(ApiService.class);
 
