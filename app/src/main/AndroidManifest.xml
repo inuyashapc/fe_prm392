@@ -48,6 +48,10 @@
             android:name=".BrandList"
             android:exported="false" />
         <activity
+            android:name=".Activity.ProductAdmin"
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

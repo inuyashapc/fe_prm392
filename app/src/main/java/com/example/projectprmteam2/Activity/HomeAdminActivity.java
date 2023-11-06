@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.projectprmteam2.R;
 import com.example.projectprmteam2.Sharepreference;
@@ -24,6 +25,15 @@ public class HomeAdminActivity extends AppCompatActivity {
                 sharepreference.logout();
                 sharepreference.removeRole();
                 Intent intent = new Intent(HomeAdminActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        ImageView imageView = findViewById(R.id.buttonProduct);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeAdminActivity.this, ProductAdmin.class);
                 startActivity(intent);
                 finish();
             }
