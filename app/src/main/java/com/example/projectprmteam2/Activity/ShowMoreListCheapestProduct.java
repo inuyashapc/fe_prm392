@@ -48,7 +48,7 @@ public class ShowMoreListCheapestProduct extends AppCompatActivity {
     }
     public void getCheapestProductListViewMore() {
 
-        ApiService.apiservice.getProductList().enqueue(new Callback<List<Product>>() {
+        ApiService.apiservice.getCheapestList().enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 listCheapestProductViewMore = response.body();
