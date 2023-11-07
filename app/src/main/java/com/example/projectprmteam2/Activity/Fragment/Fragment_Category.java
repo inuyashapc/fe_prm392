@@ -1,5 +1,6 @@
 package com.example.projectprmteam2.Activity.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,12 +14,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectprmteam2.Activity.LoginActivity;
 import com.example.projectprmteam2.R;
 import com.example.projectprmteam2.adapter.BrandAdapter;
+import com.example.projectprmteam2.adapter.ProductAdapter;
 import com.example.projectprmteam2.api.ApiService;
 import com.example.projectprmteam2.model.Brand;
+import com.example.projectprmteam2.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,16 +36,22 @@ public class Fragment_Category extends Fragment {
 
     private Spinner brandSpinner;
     private List<Brand> brandList;
+    private List<Product> productList;
+    private Context context;
     private ArrayAdapter<Brand> brandAdapter;
+    private RecyclerView recyclerViewProductByBrand;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
-
+        context = getContext();
         brandSpinner = view.findViewById(R.id.brandSpinner);
-
+        recyclerViewProductByBrand = view.findViewById(R.id.productRecyclerView);
         loadBrandList();
+        loadProductsByBrand("653e1565dbe31530645397b6");
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerViewProductByBrand.setLayoutManager(layoutManager);
 
         return view;
     }
@@ -87,12 +98,22 @@ public class Fragment_Category extends Fragment {
     private void loadProductsByBrand(String brandId) {
         // Thực hiện việc tải sản phẩm dựa trên hãng bàn phím
         // Gọi phương thức ApiService để tải danh sách sản phẩm dựa trên brandId
+        ApiService.apiservice.getProductsByBrand(brandId).enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                productList = response.body();
+                recyclerViewProductByBrand.setAdapter(new ProductAdapter(context, productList));
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Toast.makeText(context, "Lỗi call api product by brand", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
-
-
 }
