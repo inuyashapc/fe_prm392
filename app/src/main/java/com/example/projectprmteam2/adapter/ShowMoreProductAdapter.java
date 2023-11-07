@@ -62,8 +62,6 @@ public class ShowMoreProductAdapter extends RecyclerView.Adapter<ShowMoreProduct
             super(itemView);
             imageView = itemView.findViewById(R.id.img_product_view_more);
             tv_product_name = itemView.findViewById(R.id.tv_product_name_view_more);
-            tv_product_category = itemView.findViewById(R.id.tv_product_category_view_more);
-            tv_brand_product = itemView.findViewById(R.id.tv_brand_product_view_more);
             tv_product_price = itemView.findViewById(R.id.tv_product_price_view_more);
         }
 

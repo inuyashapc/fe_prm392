@@ -51,8 +51,6 @@ public class ProductCheapAdapter extends RecyclerView.Adapter<ProductCheapAdapte
         }
 //        holder.imageView.setImageResource(product.getThumbnail());
         holder.tv_product_name.setText(product.getName());
-        holder.tv_product_category.setText("Switch: "+product.getCategory().getName());
-        holder.tv_brand_product.setText("Hãng: "+product.getBrand().getName());
         holder.tv_product_price.setText("Giá: "+(int)product.getPrice()+ " vnd");
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,14 +69,12 @@ public class ProductCheapAdapter extends RecyclerView.Adapter<ProductCheapAdapte
 
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView imageView;
-        private TextView tv_product_name, tv_product_category, tv_brand_product, tv_product_price;
+        private TextView tv_product_name, tv_product_price;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.img_product);
             tv_product_name = itemView.findViewById(R.id.tv_product_name);
-            tv_product_category = itemView.findViewById(R.id.tv_product_category);
-            tv_brand_product = itemView.findViewById(R.id.tv_brand_product);
             tv_product_price = itemView.findViewById(R.id.tv_product_price);
 
         }
