@@ -48,8 +48,8 @@ public interface ApiService {
 
     @GET("products/fiveCheapest")
     Call<List<Product>> getFiveCheapest();
-    @GET("products/{brand}")
-    Call<Product> getProductsByBrand(@Path("brand") String brand);
+    @GET("products/brand/{brand}")
+    Call<List<Product>> getProductsByBrand(@Path("brand") String brand);
 
     @GET("products/cheapest")
     Call<List<Product>> getCheapestList();

@@ -1,11 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <Button
-        android:id="@+id/logout"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:text="Logout"/>
+        android:text="Profile"
+        android:textSize="50sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên người dùng: "
+        android:textSize="20sp"
+        android:layout_gravity="left"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="32dp" />
+
+    <TextView
+        android:id="@+id/tv_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vai trò: "
+        android:textSize="20sp"
+        android:layout_gravity="left"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="32dp" />
+
+    <TextView
+        android:id="@+id/tv_fullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Họ tên: "
+        android:textSize="20sp"
+        android:layout_gravity="left"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="32dp" />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SĐT: "
+        android:textSize="20sp"
+        android:layout_gravity="left"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="32dp" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Địa chỉ: "
+        android:textSize="20sp"
+        android:layout_gravity="left"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="32dp" />
+
+    <!-- Hai nút trên cùng một hàng -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="300dp">
+
+        <Button
+            android:id="@+id/edit_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="Edit Profile" />
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout" />
+    </LinearLayout>
 </LinearLayout>
