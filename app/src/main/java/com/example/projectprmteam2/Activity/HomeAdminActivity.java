@@ -35,7 +35,6 @@ public class HomeAdminActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeAdminActivity.this, ProductAdmin.class);
                 startActivity(intent);
-                finish();
             }
         });
     }

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,6 +61,14 @@ public class Fragment_Home extends Fragment {
         initCheapProduct(view);
         initProduct(view);
         handleSearchView(view);
+        LinearLayout mainLayout = view.findViewById(R.id.home_fragment);
+        mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchView.clearFocus();
+            }
+        });
+
         return view;
     }
 
@@ -149,7 +158,7 @@ public class Fragment_Home extends Fragment {
             }
         }
         if (searchResult.isEmpty()){
-            Toast.makeText(context,"Không tìm thấy user!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"Không tìm thấy product!",Toast.LENGTH_SHORT).show();
         }
         recyclerView.setAdapter(new ProductAdapter(context, searchResult));
     }
